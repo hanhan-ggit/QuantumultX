@@ -1,0 +1,19 @@
+name: Sync from upstream KOP-XIAO/QuantumultX
+
+on:
+  schedule:
+    - cron: '15 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync upstream
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+        with:
+          target_sync_branch: master
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_repo: KOP-XIAO/QuantumultX
+          upstream_sync_branch: master
+          test_mode: false
